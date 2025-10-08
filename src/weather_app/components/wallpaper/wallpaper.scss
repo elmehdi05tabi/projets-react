@@ -1,0 +1,12 @@
+.wallpaper-container{
+    background-color: black;
+    z-index: -1;
+}
+.wallpaper{
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 auto;
+    opacity: 0.4;
+    height: 100vh;
+}

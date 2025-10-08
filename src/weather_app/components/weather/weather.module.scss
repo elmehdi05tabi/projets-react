@@ -1,0 +1,55 @@
+.card {
+    position: absolute;
+    background-color: rgba(5, 244, 236, 0.3);
+    text-align: center;
+    width: 70vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px  white;
+    backdrop-filter: blur(5px);
+}
+.card:hover{
+    transition: all .2s;
+    transform: translate(-50%,-50%) scale(1.01);
+}
+.city{
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+}
+.date {
+    color: #ddd;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+}
+.temp{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+}
+.info {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    background-color: rgba(0, 0, 0, 0.687);
+    width: 70%;
+    padding: 5px;
+    margin: auto;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px  white;
+}
+.noItem {
+      background-color: rgba(5, 244, 236, 0.3);
+    padding-top: 20px ;
+    padding-bottom: 20px ;
+    margin-top: -250px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px  white;
+}

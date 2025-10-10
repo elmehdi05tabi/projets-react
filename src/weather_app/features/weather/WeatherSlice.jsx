@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
  clouds: undefined,
+ dt : undefined ,
     main: {
         feels_like: undefined
     },
@@ -12,6 +13,8 @@ const initialState = {
     wind: {
         speed: undefined
     },
+    timezone : {undefined} ,
+    formatted : undefined, 
     isLoading : false
 }
  const  WeatherSlice = createSlice({
@@ -19,16 +22,19 @@ const initialState = {
     initialState : initialState,
     reducers : {
         setData : (state,action)=>{
-            const {clouds, main, name, sys, weather, wind} = action.payload 
+            const {clouds,dt, main, name, sys, weather, wind,timezone,formatted} = action.payload 
             state.clouds = clouds 
+            state.dt = dt
             state.main = main 
             state.name = name 
             state.sys = sys 
             state.weather = weather[0]
             state.wind = wind 
             state.isLoading = true
+            state.timezone = timezone
+            state.formatted = formatted
         }
     }
 })
 export const {setData} = WeatherSlice.actions ; 
-export default  WeatherSlice.reducer
+export default  WeatherSlice.reducer    

@@ -1,6 +1,6 @@
 // import { Card } from '@mui/material' 
 import {Card} from 'react-bootstrap'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ClearSky from '../svgs/day/ClearSky'
 import Temp from '../svgs/Temp'
 import Sunrise from '../svgs/Sunrise'
@@ -22,28 +22,52 @@ import Rain from '../svgs/day/Rain'
 import Thunderstorm from '../svgs/day/Thunderstorm'
 import Snow from '../svgs/day/Snow'
 import Mist from '../svgs/day/Mist'
-import Sunset from '../svgs/Sunset'
+// !nigth 
+import ClearSkyNg from '../svgs/night/ClearSkyNg'
+import ScatteredCloudsNg from '../svgs/night/ScatteredCloudsNg'
+import FewCloudsNg from '../svgs/night/FewCloudsNg'
+import BrokenCloudsNg from '../svgs/night/BrokenCloudsNg'
+import ShowerRainNg from '../svgs/night/ShowerRainNg'
+import RainNg from '../svgs/night/RainNg'
+import ThunderstormNg from '../svgs/night/ThunderstormNg'
+import SnowNg from '../svgs/night/SnowNg'
+import MistNg from '../svgs/night/MistNg'
+import Sunset from '../svgs/Sunset' 
+import { time } from 'framer-motion'
 function Weather() {
     const weather = useSelector(({weather})=>weather) ; 
-    console.log(weather) ; 
+    const [dateTime,setDateTime] = useState('')
+    console.log(weather); 
     const displayIcon = ()=> {
+        const nbr = weather.weather.icon.substring(0,2);
         if(weather.isLoading) {
-            const nbr = weather.weather.icon.substring(0,2)  ;
-            switch(nbr) {
-                case '01' : return <ClearSky width='250px' height='250px'/>
-                case '02' : return <FewClouds width='250px' height='250px'/>
-                case '03' : return <ScatteredClouds width='250px' height='250px'/>
-                case '04' : return <BrokenClouds width='250px' height='250px'/>
-                case '09' : return <ShowerRain width='250px' height='250px'/>
-                case '10' : return <Rain width='250px' height='250px'/>
-                case '11' : return <Thunderstorm width='250px' height='250px'/>
-                case '13' : return <Snow width='250px' height='250px'/>
-                case '15' : return <Mist width='250px' height='250px'/>
+            if(weather.dt < weather.sys.sunset){
+                switch(nbr) {
+                    case '01' : return <ClearSky width='250px' height='250px'/>
+                    case '02' : return <FewClouds width='250px' height='250px'/>
+                    case '03' : return <ScatteredClouds width='250px' height='250px'/>
+                    case '04' : return <BrokenClouds width='250px' height='250px'/>
+                    case '09' : return <ShowerRain width='250px' height='250px'/>
+                    case '10' : return <Rain width='250px' height='250px'/>
+                    case '11' : return <Thunderstorm width='250px' height='250px'/>
+                    case '13' : return <Snow width='250px' height='250px'/>
+                    case '15' : return <Mist width='250px' height='250px'/>
                 }
-                console.log(nbr)
-                    }
+            }else {
+                 switch(nbr) {
+                    case '01' : return <ClearSkyNg width='250px' height='250px'/>
+                    case '02' : return <FewCloudsNg width='250px' height='250px'/>
+                    case '03' : return <ScatteredCloudsNg width='250px' height='250px'/>
+                    case '04' : return <BrokenCloudsNg width='250px' height='250px'/>
+                    case '09' : return <ShowerRainNg width='250px' height='250px'/>
+                    case '10' : return <RainNg width='250px' height='250px'/>
+                    case '11' : return <ThunderstormNg width='250px' height='250px'/>
+                    case '13' : return <SnowNg width='250px' height='250px'/>
+                    case '15' : return <MistNg width='250px' height='250px'/>
+                }
+            }
+        }
     }
-    displayIcon()
   return (
       <Card className={style.card}>
     {weather.isLoading? 
@@ -55,9 +79,7 @@ function Weather() {
                 <Location width='35px' height='35px' />
             </div>
             <div className={style.date}>
-               <Moment unix format='DD,MM,yyyy'>
-                {weather.sys.sunrise}
-               </Moment>
+               <Moment format="llll" unix>{weather.dt}</Moment>
                 <Time width='18px' height='18px'/>
                 </div>
         </Card.Title>
@@ -69,7 +91,8 @@ function Weather() {
                 <Temp width='50px' height='40px'/>
             </div>
             <div>
-                GOOD Moring {weather.main.name}
+
+                {weather.dt > weather.sys.sunset ? 'Good Night': 'Good Mornig' } {weather.name}
             </div>
             <div className={style.info}>
                 {/* sunrise */}
@@ -98,6 +121,7 @@ function Weather() {
                     {weather.sys.sunset}
                 </Moment> PM</div>
                 </div>
+                {/* wind */}
                 <div>
                     <div>
                         <Wind width='25px' height='25px'/>
@@ -105,6 +129,7 @@ function Weather() {
                     </div>
                     <div>{weather.wind.speed}m/s</div>
                 </div>
+                {/* .Pressure */}
                 <div>
                     <div>
                         <Pressure width='25px' height='25px'/>
@@ -112,6 +137,7 @@ function Weather() {
                     </div>
                     <div>{weather.main.pressure} pa</div>
                 </div>
+                {/* Humidity */}
                 <div>
                     <div>
                         <Humidity width='25px' height='25px'/>
@@ -119,6 +145,7 @@ function Weather() {
                     </div>
                     <div>{weather.main.humidity}%</div>
                 </div>
+                {/* temp max */}
                 <div>
                     <div>
                         <TempMax width='25px' height='25px'/>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function BrokenClouds() {
+function BrokenCloudsNg() {
   return (
     <div>
         <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="broken clouds night">
@@ -20,4 +20,4 @@ function BrokenClouds() {
   )
 }
 
-export default BrokenClouds
+export default BrokenCloudsNg

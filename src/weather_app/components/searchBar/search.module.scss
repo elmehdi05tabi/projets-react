@@ -1,6 +1,6 @@
 .searchContainer {
     display: flex;
-    gap: .3rem;
+    gap: 1rem;
     position: absolute;
     top: 0; 
     left: 50%;
@@ -17,6 +17,11 @@
     box-shadow: 1px 1px 5px white;
 }
 .location{
-    background-color: white;
+    background-color: rgb(255, 255, 255,0.4);
+    box-shadow: 1px 1px 5px white;
     border-radius: 4px;
+}
+.location:hover{
+transform: scale(1.1);
+transition: all .5s;
 }

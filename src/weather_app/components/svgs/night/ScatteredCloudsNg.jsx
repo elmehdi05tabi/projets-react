@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ScatteredClouds() {
+function ScatteredCloudsNg() {
   return (
     <div>
        <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="scattered clouds night">
@@ -24,4 +24,4 @@ function ScatteredClouds() {
   )
 }
 
-export default ScatteredClouds
+export default ScatteredCloudsNg

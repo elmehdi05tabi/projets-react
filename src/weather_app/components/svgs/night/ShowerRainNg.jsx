@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ShowerRain() {
+function ShowerRainNg() {
   return (
     <div>
    <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="shower rain night">
@@ -22,4 +22,4 @@ function ShowerRain() {
   )
 }
 
-export default ShowerRain
+export default ShowerRainNg
